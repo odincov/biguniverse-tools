@@ -1,5 +1,5 @@
 {
-  "name": "variable-star-planner",
+  "name": "biguniverse-ru-tools",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
@@ -22,13 +22,14 @@
   "author": {
     "name": "Sergei Sapoznikov",
     "email": "sergei.sapoznikov@gmail.com",
-    "url": "http://www.biguniverse.ru/virable-star-planner"
+    "url": "http://tools.biguniverse.ru/"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "keywords": [
-    "redux",
+    "biguniverse-ru",
+    "biguniverse-ru-tools",
     "variable-star-planner"
   ],
   "devDependencies": {
