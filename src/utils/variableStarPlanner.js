@@ -1,8 +1,8 @@
 import julian from 'julian';
 
 const RAD = 57.29578;
-const DECL = 40.95 / RAD;
-const R_A = 47.05 / RAD;
+const DECL = 40.95567 / RAD;
+const R_A = 47.04221 / RAD;
 const LL = Math.cos(DECL) * Math.cos(R_A);
 const M_CORR = 0.91748 * Math.cos(DECL) * Math.sin(R_A) + 0.39778 * Math.sin(DECL);
 
@@ -64,7 +64,7 @@ export default class VirableStarPlanner {
       const R = 0.99972 / (1 + 0.01671 * Math.cos(nu));
       const tau = 0.005775 * R * (LL * Math.cos (lambda) + M_CORR * Math.sin (lambda));
 
-      jdTemp = jdTemp + tau + 0.5;
+      // jdTemp = jdTemp + tau + 0.5;
 
       const zz = Math.floor(jdTemp);
       const ff = jdTemp - zz;

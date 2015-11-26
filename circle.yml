@@ -1,0 +1,21 @@
+machine:
+  python:
+    version: 2.7.3
+  node:
+    version: 4.0.0
+
+dependencies:
+  post:
+    - pip install awscli
+    - npm install
+    - npm run prepublish
+
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - aws s3 sync dist/ s3://tools.biguniverse.ru --region eu-central-1
+#   staging:
+#     branch: develop
+#     commands:
+#       - aws s3 sync dist/ s3://tools-stage.biguniverse.ru--region eu-central-1

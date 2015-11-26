@@ -21,15 +21,15 @@ class PlannerForm extends Component {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Start Date</label>
-          <input type="text" placeholder="date" value="2010-12-23" {...date}/>
+          <input type="text" placeholder="date" value="2015-11-19" {...date}/>
         </div>
         <div>
           <label>EP</label>
-          <input type="text" placeholder="start point" value="2452253.567" {...ep}/>
+          <input type="text" placeholder="start point" value="2456181.84" {...ep}/>
         </div>
         <div>
           <label>Period</label>
-          <input type="text" placeholder="period" value="2.867321" {...period}/>
+          <input type="text" placeholder="period" value="2.86736" {...period}/>
         </div>
         <div>
           <button onClick={handleSubmit}>Submit</button>

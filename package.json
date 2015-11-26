@@ -17,7 +17,8 @@
     "preversion": "npm run clean && npm run check",
     "version": "npm run build",
     "postversion": "git push && git push --tags && npm run clean",
-    "prepublish": "npm run clean && npm run build"
+    "indexify": "cp index.html dist/",
+    "prepublish": "npm run clean && npm run build && npm run indexify"
   },
   "author": {
     "name": "Sergei Sapoznikov",
