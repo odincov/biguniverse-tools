@@ -18,4 +18,4 @@ deployment:
   staging:
     branch: develop
     commands:
-      - aws s3 sync dist/ s3://tools-stage.biguniverse.ru--region eu-central-1
+      - aws s3 sync dist/ s3://tools-stage.biguniverse.ru --region eu-central-1
