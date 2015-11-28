@@ -5,10 +5,10 @@ machine:
     version: 4.0.0
 
 dependencies:
-  override:
+  pre:
     - pip install awscli
     - npm install
-  post:
+  override:
     - npm run prepublish
 
 deployment:
