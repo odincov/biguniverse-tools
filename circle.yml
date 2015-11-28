@@ -7,7 +7,7 @@ machine:
 dependencies:
   pre:
     - pip install awscli
-    - npm install
+    - npm prune && npm install
   override:
     - npm run prepublish
 
