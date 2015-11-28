@@ -7,16 +7,16 @@ machine:
 dependencies:
   pre:
     - pip install awscli
-    - npm prune && npm install
-  override:
-    - npm run prepublish
-
-deployment:
-  production:
-    branch: master
-    commands:
-      - aws s3 sync dist/ s3://tools.biguniverse.ru --region eu-central-1
-  staging:
-    branch: develop
-    commands:
-      - aws s3 sync dist/ s3://tools-stage.biguniverse.ru --region eu-central-1
+    - npm install
+#   override:
+#     - npm run prepublish
+#
+# deployment:
+#   production:
+#     branch: master
+#     commands:
+#       - aws s3 sync dist/ s3://tools.biguniverse.ru --region eu-central-1
+#   staging:
+#     branch: develop
+#     commands:
+#       - aws s3 sync dist/ s3://tools-stage.biguniverse.ru --region eu-central-1
