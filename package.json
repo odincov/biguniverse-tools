@@ -51,6 +51,7 @@
     "isparta": "^3.1.0",
     "jsdom": "^6.5.1",
     "julian": "^0.1.0",
+    "lodash": "^3.10.1",
     "mocha": "^2.2.5",
     "moment": "^2.10.6",
     "normalize.css": "^3.0.3",
