@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Radium from 'radium';
 import moment from 'moment';
-import dateFormat from 'dateFormat';
+import dateFormat from 'dateformat';
 
 @Radium
 export default class PlannerResult extends Component {
