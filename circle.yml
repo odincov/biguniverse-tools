@@ -2,11 +2,7 @@ machine:
   python:
     version: 2.7.3
   node:
-    version: 5.0.0
-
-dependencies:
-  override:
-    - npm install --dev
+    version: 4.0.0
 
 deployment:
   production:
