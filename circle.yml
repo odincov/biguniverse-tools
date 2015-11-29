@@ -4,6 +4,10 @@ machine:
   node:
     version: 5.0.0
 
+dependencies:
+  override:
+    - npm install --dev
+
 deployment:
   production:
     branch: master
