@@ -8,13 +8,15 @@ module.exports = {
   output: {
     path: path.join(__dirname, 'dist'),
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: '/'
   },
   plugins: [
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       '__DEVTOOLS__': false,
-      'process.env': JSON.stringify('production')
+      'process.env': JSON.stringify('production'),
+      NODE_ENV: JSON.stringify('production'),
+      BABEL_ENV: JSON.stringify('production/client')
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
