@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react';
 import PlannerForm from './PlannerForm';
 
+import initialValues from '../utils/initialValues';
+
 import Wrapper from './Wrapper';
 import Logotype from './Logotype';
 import ImageHeader from './ImageHeader';
@@ -12,6 +14,14 @@ export default class Planner extends Component {
 
   static propTypes = {
     updatePlanner: PropTypes.func.isRequired
+  }
+
+  constructor () {
+    super();
+  }
+
+  componentDidMount () {
+    this.props.updatePlanner(initialValues);
   }
 
   render() {

@@ -1,20 +1,15 @@
 import React, { Component, PropTypes } from 'react';
 import Radium from 'radium';
 import { reduxForm } from 'redux-form';
+import throttle from 'lodash/function/throttle';
+
+import initialValues from '../utils/initialValues';
 
 import Button from './Button';
-import stars from '../data/binary-stars';
 
 export const fields = ['day', 'month', 'year', 'ep', 'period'];
 
-const now = new Date();
-const initialValues = {
-  day: now.getDate(),
-  month: (now.getMonth()+1),
-  year: now.getFullYear(),
-  ep: stars[0].ep,
-  period: stars[0].period
-};
+const throttleTime = 350;
 
 @Radium
 class PlannerForm extends Component {
@@ -23,6 +18,9 @@ class PlannerForm extends Component {
     fields: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     resetForm: PropTypes.func.isRequired
+  }
+
+  componentDidMount () {
   }
 
   render () {
@@ -36,7 +34,7 @@ class PlannerForm extends Component {
       <form style={styles.base} onSubmit={handleSubmit}>
         <ul style={styles.ul}>
           <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" {...day}/>
+            <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" name={day.name} value={day.value} onChange={day.onChange}/>
             <label style={styles.label}>День</label>
           </li>
           <li style={styles.li}>
@@ -115,5 +113,5 @@ export default reduxForm({
   form: 'planner',
   fields
 },
-state => ({ initialValues: initialValues }),
+state => ({initialValues: initialValues})
 )(PlannerForm);
