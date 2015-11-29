@@ -4,11 +4,6 @@ machine:
   node:
     version: 5.0.0
 
-dependencies:
-  pre:
-    - pip install awscli
-    - npm install && npm run prepublish
-
 deployment:
   production:
     branch: master
