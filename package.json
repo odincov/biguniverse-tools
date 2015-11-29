@@ -13,12 +13,12 @@
     "test:watch": "npm test -- --watch",
     "check": "npm run lint && npm run test  && flow check ",
     "test:cov": "NODE_ENV=test babel-node $(npm bin)/isparta cover $(npm bin)/_mocha -- --recursive",
-    "build": "webpack src/index.js --config webpack.config.production.js",
+    "distbuild": "webpack src/index.js --config webpack.config.production.js",
     "preversion": "npm run clean && npm run check",
-    "version": "npm run build",
+    "version": "npm run distbuild",
     "postversion": "git push && git push --tags && npm run clean",
     "indexify": "cp index.html dist/",
-    "prepublish": "npm run clean && npm run build && npm run indexify"
+    "prepublish": "npm run clean && npm run distbuild && npm run indexify"
   },
   "author": {
     "name": "Sergei Sapoznikov",
@@ -33,7 +33,7 @@
     "biguniverse-ru-tools",
     "variable-star-planner"
   ],
-  "devDependencies": {
+  "dependencies": {
     "babel": "^5.8.23",
     "babel-core": "^5.8.25",
     "babel-eslint": "^4.1.3",
@@ -67,9 +67,7 @@
     "url-loader": "^0.5.7",
     "webpack": "^1.12.2",
     "webpack-dev-middleware": "^1.2.0",
-    "webpack-hot-middleware": "^2.4.1"
-  },
-  "dependencies": {
+    "webpack-hot-middleware": "^2.4.1",
     "history": "^1.13.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
