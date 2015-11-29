@@ -7,6 +7,8 @@ machine:
 dependencies:
   override:
     - npm install --ignore-scripts
+  post:
+    - npm run prepublish
 
 deployment:
   production:
