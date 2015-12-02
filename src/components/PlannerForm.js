@@ -7,7 +7,7 @@ import initialValues from '../utils/initialValues';
 
 import Button from './Button';
 
-export const fields = ['day', 'month', 'year', 'ep', 'period'];
+export const fields = ['day', 'month', 'year', 'ep', 'period', 'decl', 'ra'];
 
 const throttleTime = 350;
 
@@ -20,12 +20,11 @@ class PlannerForm extends Component {
     resetForm: PropTypes.func.isRequired
   }
 
-  componentDidMount () {
-  }
+  componentDidMount () {}
 
   render () {
     const {
-      fields: { day, month, year, ep, period },
+      fields: { day, month, year, ep, period, decl, ra },
       handleSubmit,
       resetForm
     } = this.props;
@@ -34,7 +33,7 @@ class PlannerForm extends Component {
       <form style={styles.base} onSubmit={handleSubmit}>
         <ul style={styles.ul}>
           <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" name={day.name} value={day.value} onChange={day.onChange}/>
+            <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" {...day}/>
             <label style={styles.label}>День</label>
           </li>
           <li style={styles.li}>
@@ -45,13 +44,23 @@ class PlannerForm extends Component {
             <input type="text" style={styles.dateInput} key="year" size="4" maxsize="4" {...year}/>
             <label style={styles.label}>Год</label>
           </li>
+        </ul>
+        <ul style={styles.ul}>
           <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="ep" size="14" {...ep}/>
+            <input type="text" style={styles.dateInput} key="ep" size="10" {...ep}/>
             <label style={styles.label}>Начало отсчета</label>
           </li>
           <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="period" size="7" {...period}/>
+            <input type="text" style={styles.dateInput} key="period" size="8" {...period}/>
             <label style={styles.label}>Период</label>
+          </li>
+          <li style={styles.li}>
+            <input type="text" style={styles.dateInput} key="decl" size="9" {...decl}/>
+            <label style={styles.label}>Decl</label>
+          </li>
+          <li style={styles.li}>
+            <input type="text" style={styles.dateInput} key="ra" size="9" {...ra}/>
+            <label style={styles.label}>RA</label>
           </li>
         </ul>
 

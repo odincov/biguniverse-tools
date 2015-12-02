@@ -1,16 +1,17 @@
 import julian from 'julian';
 
 const RAD = 57.29578;
-const DECL = 40.95567 / RAD;
-const R_A = 47.04221 / RAD;
-const LL = Math.cos(DECL) * Math.cos(R_A);
-const M_CORR = 0.91748 * Math.cos(DECL) * Math.sin(R_A) + 0.39778 * Math.sin(DECL);
 
 export default class VirableStarPlanner {
 
-  constructor (ep, period) {
+  constructor (ep, period, decl, ra) {
     this.ep = parseFloat(ep);
     this.period = parseFloat(period);
+
+    this.DECL = parseFloat(decl) / RAD;
+    this.R_A = parseFloat(ra) / RAD;
+    this.LL = Math.cos(this.DECL) * Math.cos(this.R_A);
+    this.M_CORR = 0.91748 * Math.cos(this.DECL) * Math.sin(this.R_A) + 0.39778 * Math.sin(this.DECL);
   }
 
   getAng (big) {
@@ -62,9 +63,9 @@ export default class VirableStarPlanner {
       const lambda = this.getAng(L + 1.9148 * Math.sin(M) + 0.02 * Math.sin (2 * M)) / RAD;
       const nu = lambda - L / RAD + M;
       const R = 0.99972 / (1 + 0.01671 * Math.cos(nu));
-      const tau = 0.005775 * R * (LL * Math.cos (lambda) + M_CORR * Math.sin (lambda));
+      const tau = 0.005775 * R * (this.LL * Math.cos (lambda) + this.M_CORR * Math.sin (lambda));
 
-      // jdTemp = jdTemp + tau + 0.5;
+      jdTemp = jdTemp + tau + 0.5;
 
       const zz = Math.floor(jdTemp);
       const ff = jdTemp - zz;
