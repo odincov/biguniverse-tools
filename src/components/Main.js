@@ -23,9 +23,7 @@ export default class Main extends Component {
 
 const styles = {
   base: {
-    maxWidth: '800px',
-    paddingLeft: '1em',
-    paddingRight: '1em',
-    margin: '1.25em auto'
+    maxWidth: '80%',
+    marginLeft: '5%'
   }
 }

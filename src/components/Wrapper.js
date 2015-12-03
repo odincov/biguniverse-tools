@@ -10,7 +10,7 @@ export default class Wrapper extends Component {
 
   render () {
     return (
-      <div style={[styles.base, styles[this.props.color]]}>
+      <div style={[styles.base]}>
         {this.props.children}
       </div>
     );
@@ -19,12 +19,6 @@ export default class Wrapper extends Component {
 
 const styles = {
   base: {
-    padding: '1em 2em'
-  },
-  lightBlue: {
-    backgroundColor: '#f5f6fb'
-  },
-  white: {
-
+    padding: '1em 0'
   }
 }

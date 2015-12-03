@@ -33,17 +33,17 @@ export default class Planner extends Component {
 
     return (
       <div>
-        <ImageHeader image={img}>
-          <Logotype/>
-          <h1>Variable Star Planner</h1>
-          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        </ImageHeader>
-        <Wrapper color="lightBlue">
-          <PlannerForm onSubmit={updatePlanner}/>
-        </Wrapper>
-        <Wrapper color="white">
-          <PlannerResult planner={planner}/>
-        </Wrapper>
+        <Logotype/>
+        <h1>Планировщик минимумов переменных звезд</h1>
+        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
+        <PlannerForm onSubmit={updatePlanner}/>
+        <PlannerResult planner={planner}/>
+        <hr/>
+        <p>
+          &copy; Большая Вселенная, 2010—2015.<br/>
+          Использование материалов сайта «Большая Вселенная» разрешено при наличии активной ссылки на источник.<br/>
+          Все права на фотографии и иллюстрации принадлежат их авторам.
+        </p>
       </div>
     );
   }

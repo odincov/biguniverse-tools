@@ -17,7 +17,7 @@ export default class ImageHeader extends Component {
 const styles = {
   base: {
     backgroundSize: 'cover',
-    textAlign: 'center',
+    textAlign: 'left',
     color: 'white',
     padding: '2em'
   }

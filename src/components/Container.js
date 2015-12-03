@@ -15,9 +15,7 @@ export default class Lotoype extends Component {
 
 const styles = {
   base: {
-    background: 'white',
-    boxShadow: '0 0 3px rgba(0, 0, 0, 0.25)',
     overflow: 'hidden',
-    borderRadius: '3px'
+    padding: '2em'
   }
 }

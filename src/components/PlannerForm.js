@@ -31,20 +31,9 @@ class PlannerForm extends Component {
 
     return (
       <form style={styles.base} onSubmit={handleSubmit}>
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" {...day}/>
-            <label style={styles.label}>День</label>
-          </li>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="month" size="2" maxsize="2" {...month}/>
-            <label style={styles.label}>Месяц</label>
-          </li>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="year" size="4" maxsize="4" {...year}/>
-            <label style={styles.label}>Год</label>
-          </li>
-        </ul>
+
+        <h4>1. Введите параметры звезды</h4>
+
         <ul style={styles.ul}>
           <li style={styles.li}>
             <input type="text" style={styles.dateInput} key="ep" size="10" {...ep}/>
@@ -64,11 +53,44 @@ class PlannerForm extends Component {
           </li>
         </ul>
 
-        <div style={styles.buttonWrapper}>
-          <Button handler={handleSubmit}>
-            Расчитать
-          </Button>
-        </div>
+        <h4>1.1. Либо выберите одну из списка</h4>
+        <select>
+          <optgroup label="EB - Eclipsing Binaries">
+            <option>Algol</option>
+            <option>RZ Cas</option>
+            <option>V1016 Ori</option>
+            <option>U Sge</option>
+            <option>Delta Lib</option>
+            <option>U Cep</option>
+          </optgroup>
+          <optgroup label="Cepheids">
+            <option>Delta Cap</option>
+            <option>Eta Aql</option>
+            <option>W Sgr</option>
+            <option>Zeta Gem</option>
+          </optgroup>
+        </select>
+
+        <h4>2. Установите расчетную дату</h4>
+
+        <ul style={styles.ul}>
+          <li style={styles.li}>
+            <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" {...day}/>
+            <label style={styles.label}>День</label>
+          </li>
+          <li style={styles.li}>
+            <input type="text" style={styles.dateInput} key="month" size="2" maxsize="2" {...month}/>
+            <label style={styles.label}>Месяц</label>
+          </li>
+          <li style={styles.li}>
+            <input type="text" style={styles.dateInput} key="year" size="4" maxsize="4" {...year}/>
+            <label style={styles.label}>Год</label>
+          </li>
+        </ul>
+
+        <Button handler={handleSubmit}>
+          Расчитать
+        </Button>
       </form>
     )
   }
@@ -76,13 +98,13 @@ class PlannerForm extends Component {
 
 const styles = {
   base: {
-    textAlign: 'center'
+    textAlign: 'left'
   },
   ul: {
     listStyle: 'none',
     padding: 0,
     margin: '1em 0 2em 0',
-    textAlign: 'center'
+    textAlign: 'left'
   },
   li: {
     display: 'inline-block',
@@ -95,12 +117,9 @@ const styles = {
     textAlign: 'center',
     padding: '0.25em 0.5em',
     marginBottom: '0.25em',
-    borderTop: 'none',
-    borderLeft: 'none',
-    borderRight: 'none',
-    borderBottom: 'solid 1px #e2e2e2',
+    border: 'solid 1px #e2e2e2',
     color: 'black',
-    backgroundColor: 'transparent',
+    backgroundColor: 'white',
     fontSize: '1.75em',
     ':focus': {
       backgroundColor: 'rgba(255,255,255,0.75)',
@@ -110,11 +129,8 @@ const styles = {
   label: {
     display: 'block',
     fontSize: '0.65em',
-    color: '#ccc',
+    color: '#c3c3c3',
     width: '100%'
-  },
-  buttonWrapper: {
-    marginBottom: '-3em'
   }
 }
 
