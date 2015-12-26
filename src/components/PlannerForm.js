@@ -1,15 +1,13 @@
 import React, { Component, PropTypes } from 'react';
 import Radium from 'radium';
 import { reduxForm } from 'redux-form';
-import throttle from 'lodash/function/throttle';
 
 import initialValues from '../utils/initialValues';
+import stars from '../data/binary-stars';
 
 import Button from './Button';
 
-export const fields = ['day', 'month', 'year', 'ep', 'period', 'decl', 'ra'];
-
-const throttleTime = 350;
+export const fields = ['day', 'month', 'year', 'ep', 'period', 'decl', 'ra', 'star'];
 
 @Radium
 class PlannerForm extends Component {
@@ -20,20 +18,32 @@ class PlannerForm extends Component {
     resetForm: PropTypes.func.isRequired
   }
 
-  componentDidMount () {}
+  handleSelectStarChange (e) {
+    const star = e.target.value;
+    this.props.selectStar(star);
+  }
 
   render () {
     const {
-      fields: { day, month, year, ep, period, decl, ra },
+      fields: { day, month, year, ep, period, decl, ra, star },
       handleSubmit,
       resetForm
     } = this.props;
 
+
+    const starOptions = stars.map(function (star, i) {
+      return <option key={i} value={star.name}>{star.name}</option>;
+    });
+
     return (
       <form style={styles.base} onSubmit={handleSubmit}>
 
-        <h4>1. Введите параметры звезды</h4>
+        <h4>1. Выберите звезду</h4>
+        <select style={styles.select} key="star" onChange={this.handleSelectStarChange.bind(this)}>
+          {starOptions}
+        </select>
 
+        <h4>1.1 Параметры звезды</h4>
         <ul style={styles.ul}>
           <li style={styles.li}>
             <input type="text" style={styles.dateInput} key="ep" size="10" {...ep}/>
@@ -44,32 +54,15 @@ class PlannerForm extends Component {
             <label style={styles.label}>Период</label>
           </li>
           <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="decl" size="9" {...decl}/>
-            <label style={styles.label}>Decl</label>
-          </li>
-          <li style={styles.li}>
             <input type="text" style={styles.dateInput} key="ra" size="9" {...ra}/>
             <label style={styles.label}>RA</label>
           </li>
+          <li style={styles.li}>
+            <input type="text" style={styles.dateInput} key="decl" size="9" {...decl}/>
+            <label style={styles.label}>Decl</label>
+          </li>
         </ul>
 
-        <h4>1.1. Либо выберите одну из списка</h4>
-        <select>
-          <optgroup label="EB - Eclipsing Binaries">
-            <option>Algol</option>
-            <option>RZ Cas</option>
-            <option>V1016 Ori</option>
-            <option>U Sge</option>
-            <option>Delta Lib</option>
-            <option>U Cep</option>
-          </optgroup>
-          <optgroup label="Cepheids">
-            <option>Delta Cap</option>
-            <option>Eta Aql</option>
-            <option>W Sgr</option>
-            <option>Zeta Gem</option>
-          </optgroup>
-        </select>
 
         <h4>2. Установите расчетную дату</h4>
 
@@ -131,12 +124,22 @@ const styles = {
     fontSize: '0.65em',
     color: '#c3c3c3',
     width: '100%'
+  },
+  select: {
+    padding: '0.25em 0.5em',
+    fontSize: '1.75em',
+    border: 'solid 1px #e2e2e2',
+    borderRadius: '0px',
+    appearance: 'none',
+    backgroundColor: 'white',
   }
 }
 
 export default reduxForm({
-  form: 'planner',
+  form: 'plannerForm',
   fields
 },
-state => ({initialValues: initialValues})
+state => ({
+  initialValues: initialValues
+})
 )(PlannerForm);

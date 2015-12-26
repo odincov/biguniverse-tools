@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Planner from '../components/Planner';
 import * as PlannerActions from '../actions/planner';
 
-
 function mapStateToProps(state) {
   return {
     planner: state.planner

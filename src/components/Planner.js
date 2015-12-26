@@ -13,7 +13,8 @@ let img = require('../images/bitu-bg.jpg');
 export default class Planner extends Component {
 
   static propTypes = {
-    updatePlanner: PropTypes.func.isRequired
+    updatePlanner: PropTypes.func.isRequired,
+    selectStar: PropTypes.func.isRequired
   }
 
   constructor () {
@@ -28,7 +29,9 @@ export default class Planner extends Component {
     const {
       setDate,
       planner,
-      updatePlanner
+      plannerForm,
+      updatePlanner,
+      selectStar
     } = this.props;
 
     return (
@@ -36,7 +39,7 @@ export default class Planner extends Component {
         <Logotype/>
         <h1>Планировщик минимумов переменных звезд</h1>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        <PlannerForm onSubmit={updatePlanner}/>
+        <PlannerForm onSubmit={updatePlanner} selectStar={selectStar}/>
         <PlannerResult planner={planner}/>
         <hr/>
         <p>
