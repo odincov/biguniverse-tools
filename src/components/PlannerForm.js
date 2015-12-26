@@ -38,35 +38,15 @@ class PlannerForm extends Component {
     return (
       <form style={styles.base} onSubmit={handleSubmit}>
 
-        <h4>1. Выберите звезду</h4>
-        <select style={styles.select} key="star" onChange={this.handleSelectStarChange.bind(this)}>
-          {starOptions}
-        </select>
-
-        <h4>1.1 Параметры звезды</h4>
-        <ul style={styles.ul}>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="ep" size="10" {...ep}/>
-            <label style={styles.label}>Начало отсчета</label>
-          </li>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="period" size="8" {...period}/>
-            <label style={styles.label}>Период</label>
-          </li>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="ra" size="9" {...ra}/>
-            <label style={styles.label}>RA</label>
-          </li>
-          <li style={styles.li}>
-            <input type="text" style={styles.dateInput} key="decl" size="9" {...decl}/>
-            <label style={styles.label}>Decl</label>
-          </li>
-        </ul>
-
-
-        <h4>2. Установите расчетную дату</h4>
+        <h4>Исходные данные расчета</h4>
 
         <ul style={styles.ul}>
+          <li style={styles.li}>
+            <select style={styles.select} key="star" onChange={this.handleSelectStarChange.bind(this)}>
+              {starOptions}
+            </select>
+            <label style={styles.label}>Звезда</label>
+          </li>
           <li style={styles.li}>
             <input type="text" style={styles.dateInput} key="day" size="2" maxsize="2" {...day}/>
             <label style={styles.label}>День</label>
@@ -81,8 +61,37 @@ class PlannerForm extends Component {
           </li>
         </ul>
 
+        <div style={styles.formSwitcher}>
+          <label>
+            <input type="checkbox"/> Включить режим ручной корректировки
+          </label>
+        </div>
+
+        <div style={styles.hidden}>
+          <h4>Режим ручного управления</h4>
+
+          <ul style={styles.ul}>
+            <li style={styles.li}>
+              <input type="text" style={styles.dateInput} key="ep" size="12" {...ep}/>
+              <label style={styles.label}>Начало отсчета (HJD Epoch)</label>
+            </li>
+            <li style={styles.li}>
+              <input type="text" style={styles.dateInput} key="period" size="8" {...period}/>
+              <label style={styles.label}>Период (HDJ days)</label>
+            </li>
+            <li style={styles.li}>
+              <input type="text" style={styles.dateInput} key="ra" size="9" {...ra}/>
+              <label style={styles.label}>RA</label>
+            </li>
+            <li style={styles.li}>
+              <input type="text" style={styles.dateInput} key="decl" size="9" {...decl}/>
+              <label style={styles.label}>Decl</label>
+            </li>
+          </ul>
+        </div>
+
         <Button handler={handleSubmit}>
-          Расчитать
+          Расчитать каллендарь наблюдений
         </Button>
       </form>
     )
@@ -97,7 +106,7 @@ const styles = {
     listStyle: 'none',
     padding: 0,
     margin: '1em 0 2em 0',
-    textAlign: 'left'
+    textAlign: 'left',
   },
   li: {
     display: 'inline-block',
@@ -122,16 +131,25 @@ const styles = {
   label: {
     display: 'block',
     fontSize: '0.65em',
-    color: '#c3c3c3',
-    width: '100%'
+    color: '#333',
+    width: '100%',
+    textAlign: 'center'
   },
   select: {
+    color: 'black',
     padding: '0.25em 0.5em',
     fontSize: '1.75em',
     border: 'solid 1px #e2e2e2',
     borderRadius: '0px',
     appearance: 'none',
     backgroundColor: 'white',
+    marginBottom: '0.25em',
+  },
+  hidden: {
+    display: 'none'
+  },
+  formSwitcher: {
+    marginBottom: '2em'
   }
 }
 
