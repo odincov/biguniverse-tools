@@ -13,13 +13,13 @@ export default class PlannerResult extends Component {
 
     return (
       <div style={styles.base}>
-        <h4>Результаты расчета</h4>
         <div style={styles.resultsWrapper}>
           <h5>UTC</h5>
           <ul style={styles.ul}>
             {planner.map(function (item, i) {
               let utcDate = new Date(item.getUTCFullYear(), item.getUTCMonth(), item.getUTCDate(),  item.getUTCHours(), item.getUTCMinutes(), item.getUTCSeconds());
-              let date = dateFormat(utcDate, 'dd mmmm, yyyy, HH:MM:ss');
+              // let date = dateFormat(utcDate, 'dd mmmm, yyyy, HH:MM:ss');
+              let date = moment.utc(utcDate).format('DD MMMM YYYY, HH:MM:ss');
               return <li key={i}>{date}</li>;
             })}
           </ul>
@@ -28,7 +28,7 @@ export default class PlannerResult extends Component {
           <h5>Ваша временная зона</h5>
           <ul style={styles.ul}>
             {planner.map(function (item, i) {
-              let date = dateFormat(item, 'dd mmmm, yyyy, HH:MM:ss');
+              let date = moment(item).format('DD MMMM YYYY, HH:MM:ss');
               return <li key={i}>{date}</li>;
             })}
           </ul>

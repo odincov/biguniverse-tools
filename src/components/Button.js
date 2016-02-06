@@ -18,7 +18,7 @@ const styles = {
     textAlign: 'center',
     padding: '0.5em 1em',
     fontSize: '1em',
-    backgroundColor: '#3f51b5',
+    backgroundColor: '#4A90E2',
     color: 'white',
     border: 'none',
     borderRadius: '3px'
