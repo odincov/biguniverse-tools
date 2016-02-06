@@ -20,6 +20,7 @@ export const SELECT_STAR = 'SELECT_STAR';
 
 
 export function updatePlanner (data) {
+  console.log('data', data);
   const { ep, period, decl, ra, year, month, day } = data;
 
   let planner = new VariableStarPlanner(ep, period, decl, ra);

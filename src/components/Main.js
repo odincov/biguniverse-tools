@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import Container from '../components/Container';
 import Radium from 'radium';
+
+import { Layout } from './';
 
 @Radium
 export default class Main extends Component {
@@ -11,19 +12,10 @@ export default class Main extends Component {
 
   render() {
     return (
-      <div style={styles.base}>
+      <Layout>
         {/* this will render the child routes */}
-        <Container>
-          {this.props.children}
-        </Container>
-      </div>
+        {this.props.children}
+      </Layout>
     );
-  }
-}
-
-const styles = {
-  base: {
-    maxWidth: '80%',
-    marginLeft: '5%'
   }
 }

@@ -1,14 +1,11 @@
 import React, { Component, PropTypes } from 'react';
+
+import initialValues from '../../utils/initialValues';
+
 import PlannerForm from './PlannerForm';
-
-import initialValues from '../utils/initialValues';
-
-import Wrapper from './Wrapper';
-import Logotype from './Logotype';
-import ImageHeader from './ImageHeader';
 import PlannerResult from './PlannerResult';
 
-let img = require('../images/bitu-bg.jpg');
+let img = require('../../images/bitu-bg.jpg');
 
 export default class Planner extends Component {
 
@@ -25,7 +22,7 @@ export default class Planner extends Component {
     this.props.updatePlanner(initialValues);
   }
 
-  render() {
+  render () {
     const {
       setDate,
       planner,
@@ -36,19 +33,10 @@ export default class Planner extends Component {
 
     return (
       <div>
-        <Logotype/>
         <h1>Планировщик минимумов переменных звезд</h1>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
         <PlannerForm onSubmit={updatePlanner} selectStar={selectStar}/>
         <PlannerResult planner={planner}/>
-        <hr/>
-        <p>
-          &copy; Большая Вселенная, 2010—2015.
-        </p>
-        <p>
-          Использование материалов сайта «Большая Вселенная» разрешено при наличии активной ссылки на источник.<br/>
-          Все права на фотографии и иллюстрации принадлежат их авторам.
-        </p>
       </div>
     );
   }

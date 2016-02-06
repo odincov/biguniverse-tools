@@ -1,6 +1,6 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Planner from '../components/Planner';
+import Planner from '../components/page-planner/Planner';
 import * as PlannerActions from '../actions/planner';
 
 function mapStateToProps(state) {

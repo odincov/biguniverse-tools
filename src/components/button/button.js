@@ -4,6 +4,10 @@ import Radium from 'radium';
 @Radium
 export default class Button extends Component {
 
+  static propTypes = {
+    children: PropTypes.any.isRequired
+  }
+
   render () {
     return (
       <button style={styles.base}>
