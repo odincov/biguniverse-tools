@@ -51,9 +51,9 @@ export default class PlannerForm extends Component {
     const selectedDay = moment(this.state.calendarValue, "L", true).toDate();
     const { star } = this.props;
 
-    const starOptions = stars.map((star, i) => {
-      const selected = star.name === star.name;
-      return <option key={i} value={star.name} selected={selected}>{star.name}</option>;
+    const starOptions = stars.map((item, i) => {
+      const selected = item.name === star.name;
+      return <option key={i} value={item.name} selected={selected}>{item.name}</option>;
     });
 
 
