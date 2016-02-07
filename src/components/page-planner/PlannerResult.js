@@ -37,12 +37,17 @@ export default class PlannerResult extends Component {
 const styles = {
   base: {
     float: 'left',
-    width: '100%'
+    width: '100%',
   },
   resultsWrapper: {
     float: 'left',
-    width: '300px',
-    paddingRight: '2em'
+    width: '100%',
+    '@media (min-width: 680px)': {
+      width: '50%'
+    },
+    '@media (min-width: 1024px)': {
+      width: '400px'
+    }
   },
   header: {
     padding: 0,

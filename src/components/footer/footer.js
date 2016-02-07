@@ -1,5 +1,7 @@
 import React, { Component, PropTypes } from 'react';
+import Radium from 'radium';
 
+@Radium
 export default class Footer extends Component {
   render () {
     return (
@@ -9,10 +11,19 @@ export default class Footer extends Component {
           &copy; Большая Вселенная, 2010—2015.
         </p>
         <p>
-          Использование материалов сайта «Большая Вселенная» разрешено при наличии активной ссылки на источник.<br/>
+          Использование материалов сайта «Большая Вселенная» разрешено при наличии активной ссылки на источник. <br style={styles.br}/>
           Все права на фотографии и иллюстрации принадлежат их авторам.
         </p>
       </div>
     );
+  }
+}
+
+const styles = {
+  br: {
+    display: 'none',
+    '@media (min-width: 1107px)': {
+      display: 'block'
+    }
   }
 }

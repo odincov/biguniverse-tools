@@ -96,19 +96,19 @@ export default class PlannerForm extends Component {
 
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <input type="text" style={styles.dateInput} size="12" ref="ep"/>
+              <input type="text" style={styles.input} ref="ep"/>
               <label style={styles.label}>Начало отсчета (HJD Epoch)</label>
             </li>
             <li style={styles.li}>
-              <input type="text" style={styles.dateInput} size="8" ref="period"/>
+              <input type="text" style={styles.input} ref="period"/>
               <label style={styles.label}>Период (HDJ days)</label>
             </li>
             <li style={styles.li}>
-              <input type="text" style={styles.dateInput} size="9" ref="ra"/>
+              <input type="text" style={styles.input} ref="ra"/>
               <label style={styles.label}>RA</label>
             </li>
             <li style={styles.li}>
-              <input type="text" style={styles.dateInput} size="9" ref="decl"/>
+              <input type="text" style={styles.input} ref="decl"/>
               <label style={styles.label}>Decl</label>
             </li>
           </ul>
@@ -123,24 +123,31 @@ const styles = {
   wrapper: {
     float: 'left',
     width: '100%',
+    boxSizing: 'border-box',
     borderTop: 'solid 1px #e2e2e2',
-    borderBottom: 'solid 1px #e2e2e2',
+    '@media (min-width: 680px)': {
+      borderBottom: 'solid 1px #e2e2e2',
+      paddingLeft: '300px'
+    }
   },
   calendarWrapper: {
     float: 'left',
-    width: '275px',
-    paddingRight: '2em',
-    marginRight: '2em',
-    borderRight: 'solid 1px #e2e2e2'
+    width: '100%',
+    borderBottom: 'solid 1px #e2e2e2',
+    '@media (min-width: 680px)': {
+      width: 'auto',
+      marginLeft: '-300px',
+      borderRight: 'solid 1px #e2e2e2',
+      borderBottom: 'solid 1px transparent'
+    }
   },
   formWrapper: {
     float: 'left',
-    width: '550px'
-  },
-  buttonWrapper: {
-    float: 'left',
-    width: '100%',
-    marginTop: '2em'
+    marginLeft: '-16px',
+    paddingLeft: '10px',
+    '@media (min-width: 680px)': {
+      borderLeft: 'solid 1px #e2e2e2',
+    }
   },
   base: {
     textAlign: 'left'
@@ -149,23 +156,30 @@ const styles = {
     listStyle: 'none',
     padding: 0,
     margin: '1em 0 2em 0',
-    textAlign: 'left',
   },
   li: {
     display: 'inline-block',
-    textAlign: 'center',
     paddingLeft: '0.15em',
     paddingRight: '0.15em',
-    color: '#e2e2e2'
+    color: '#e2e2e2',
+    boxSizing: 'border-box',
+
+    width: '100%',
+    '@media (min-width: 680px)': {
+      width: '50%'
+    },
+    '@media (min-width: 1100px)': {
+      width: '25%'
+    }
   },
-  dateInput: {
-    textAlign: 'center',
-    padding: '0.25em 0.5em',
+  input: {
+    padding: '0.25em 0.25em',
     marginBottom: '0.25em',
     border: 'solid 1px #e2e2e2',
     color: 'black',
     backgroundColor: 'white',
-    fontSize: '1.15em',
+    fontSize: '1.1em',
+    width: '100%',
     ':focus': {
       backgroundColor: 'rgba(255,255,255,0.75)',
       outline: 'none'
@@ -176,7 +190,7 @@ const styles = {
     fontSize: '0.65em',
     color: '#333',
     width: '100%',
-    textAlign: 'center'
+    marginBottom: '1em'
   },
   select: {
     color: 'black',
@@ -187,9 +201,6 @@ const styles = {
     // appearance: 'none',
     backgroundColor: 'white',
     marginBottom: '0.25em',
-  },
-  formSwitcher: {
-    marginBottom: '2em'
   }
 }
 

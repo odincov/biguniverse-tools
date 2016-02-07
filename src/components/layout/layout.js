@@ -25,7 +25,10 @@ export default class Layout extends Component {
 
 const styles = {
   base: {
-    maxWidth: '80%',
-    margin: '2% 5%'
+    maxWidth: '90%',
+    margin: '2% 5%',
+    '@media (min-width: 1024px)': {
+      maxWidth: '80%'
+    }
   }
 }
