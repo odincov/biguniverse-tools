@@ -17,15 +17,14 @@ import 'moment/locale/ru';
 @Radium
 export default class PlannerForm extends Component {
   state = {
-    calendarValue: moment().format("L"), // The value of the input field
+    calendarValue: moment(), // The value of the input field
     calendarMonth: new Date(), // The month to display in the calendar
     ...initialValues
   }
 
   static propTypes = {
-    fields: PropTypes.object.isRequired,
-    handleSubmit: PropTypes.func.isRequired,
-    resetForm: PropTypes.func.isRequired
+    plannerUpdate: PropTypes.func.isRequired,
+    selectStar: PropTypes.func.isRequred
   }
 
   handleSelectStarChange (e) {
@@ -33,27 +32,15 @@ export default class PlannerForm extends Component {
     this.props.selectStar(star);
   }
 
-  handleCalendarInputChange(e) {
-    const { value } = e.target;
-
-    // Change the current month only if the value entered by the user is a valid
-    // date, according to the `L` format
-    if (moment(value, "L", true).isValid()) {
-      this.setState({
-        calendarMonth: moment(value, "L").toDate(),
-        calendarValue: value
-      }, this.showCalendarCurrentDate);
-    }
-    else {
-      this.setState({ calendarValue: value }, this.showCalendarCurrentDate);
-    }
-  }
-
   handleCalendarDayClick(e, day) {
+    const momentDay = moment(day);
+
     this.setState({
-      calendarValue: moment(day).format("L"),
+      calendarValue: momentDay,
       calendarMonth: day
     });
+
+    this.props.updateDate(momentDay);
   }
 
   showCalendarCurrentDate() {
@@ -62,9 +49,13 @@ export default class PlannerForm extends Component {
 
   render () {
     const selectedDay = moment(this.state.calendarValue, "L", true).toDate();
-    const starOptions = stars.map(function (star, i) {
-      return <option key={i} value={star.name}>{star.name}</option>;
+    const { star } = this.props;
+
+    const starOptions = stars.map((star, i) => {
+      const selected = star.name === star.name;
+      return <option key={i} value={star.name} selected={selected}>{star.name}</option>;
     });
+
 
     return (
       <div style={styles.wrapper}>
@@ -72,7 +63,6 @@ export default class PlannerForm extends Component {
 
           <DayPicker
             ref="daypicker"
-            initialMonth={ this.state.calendarMonth }
             localeUtils={ LocaleUtils }
             modifiers={{ selected: day => DateUtils.isSameDay(selectedDay, day) }}
             locale="ru"
@@ -96,19 +86,19 @@ export default class PlannerForm extends Component {
 
           <ul style={styles.ul}>
             <li style={styles.li}>
-              <input type="text" style={styles.input} ref="ep"/>
+              <input type="text" style={styles.input} key="ep" ref="ep" value={star.ep}/>
               <label style={styles.label}>Начало отсчета (HJD Epoch)</label>
             </li>
             <li style={styles.li}>
-              <input type="text" style={styles.input} ref="period"/>
+              <input type="text" style={styles.input} key="period" ref="period" value={star.period}/>
               <label style={styles.label}>Период (HDJ days)</label>
             </li>
             <li style={styles.li}>
-              <input type="text" style={styles.input} ref="ra"/>
+              <input type="text" style={styles.input} key="ra" ref="ra" value={star.ra}/>
               <label style={styles.label}>RA</label>
             </li>
             <li style={styles.li}>
-              <input type="text" style={styles.input} ref="decl"/>
+              <input type="text" style={styles.input} key="decl" ref="decl" value={star.decl}/>
               <label style={styles.label}>Decl</label>
             </li>
           </ul>
@@ -198,7 +188,6 @@ const styles = {
     fontSize: '1.15em',
     border: 'solid 1px #e2e2e2',
     borderRadius: '0px',
-    // appearance: 'none',
     backgroundColor: 'white',
     marginBottom: '0.25em',
   }

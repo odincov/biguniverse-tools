@@ -6,14 +6,14 @@ import moment from 'moment';
 export default class PlannerResult extends Component {
 
   render () {
-    const { planner } = this.props;
+    const { scheduler } = this.props;
 
     return (
       <div style={styles.base}>
         <div style={styles.resultsWrapper}>
           <h5 style={styles.header}>Ваша временная зона</h5>
           <ul style={styles.ul}>
-            {planner.map(function (item, i) {
+            {scheduler && scheduler.map(function (item, i) {
               let date = moment(item).format('DD MMMM YYYY, HH:MM:ss');
               return <li style={styles.li} key={i}>{date}</li>;
             })}
@@ -22,7 +22,7 @@ export default class PlannerResult extends Component {
         <div style={styles.resultsWrapper}>
           <h5 style={styles.header}>UTC</h5>
           <ul style={styles.ul}>
-            {planner.map(function (item, i) {
+            {scheduler && scheduler.map(function (item, i) {
               let utcDate = new Date(item.getUTCFullYear(), item.getUTCMonth(), item.getUTCDate(),  item.getUTCHours(), item.getUTCMinutes(), item.getUTCSeconds());
               let date = moment.utc(utcDate).format('DD MMMM YYYY, HH:MM:ss');
               return <li style={styles.li} key={i}>{date}</li>;

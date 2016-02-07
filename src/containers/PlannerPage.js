@@ -1,11 +1,16 @@
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
 import Planner from '../components/page-planner/Planner';
+
 import * as PlannerActions from '../actions/planner';
 
 function mapStateToProps(state) {
   return {
-    planner: state.planner
+    scheduler: state.planner.scheduler,
+    star: state.planner.star,
+    stars: state.planner.stars,
+    date: state.planner.date
   };
 }
 

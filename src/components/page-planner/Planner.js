@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 
 import initialValues from '../../utils/initialValues';
+import initialStar from '../../data/default-star';
 
-import PlannerForm from './PlannerForm';
-import PlannerResult from './PlannerResult';
+import Form from './PlannerForm';
+import Result from './PlannerResult';
 
 let img = require('../../images/bitu-bg.jpg');
 
@@ -19,15 +20,18 @@ export default class Planner extends Component {
   }
 
   componentDidMount () {
-    this.props.updatePlanner(initialValues);
+    const { star, date } = this.props;
+    this.props.updatePlanner({ star, date });
   }
 
   render () {
     const {
-      setDate,
-      planner,
-      plannerForm,
+      scheduler,
+      star,
+      stars,
+      date,
       updatePlanner,
+      updateDate,
       selectStar
     } = this.props;
 
@@ -35,8 +39,8 @@ export default class Planner extends Component {
       <div>
         <h1>Планировщик минимумов переменных звезд</h1>
         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. </p>
-        <PlannerForm onSubmit={updatePlanner} selectStar={selectStar}/>
-        <PlannerResult planner={planner}/>
+        <Form plannerUpdate={updatePlanner} updateDate={updateDate} star={star} selectStar={selectStar}/>
+        <Result scheduler={scheduler}/>
       </div>
     );
   }

@@ -31,7 +31,7 @@ export default class VirableStarPlanner {
   getJulianDate (date) {
     let year = date.getFullYear();
     let day = date.getDate();
-    let month = date.getMonth()+1;
+    let month = date.getMonth();
 
     if (month < 3) {
       year -= 1;
