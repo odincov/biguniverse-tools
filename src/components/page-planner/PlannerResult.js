@@ -20,7 +20,7 @@ export default class PlannerResult extends Component {
           </ul>
         </div>
         <div style={styles.resultsWrapper}>
-          <h5 style={styles.header}>UTC</h5>
+          <h5 style={styles.header}>Всемирное время (UTC)</h5>
           <ul style={styles.ul}>
             {scheduler && scheduler.map(function (item, i) {
               let utcDate = new Date(item.getUTCFullYear(), item.getUTCMonth(), item.getUTCDate(),  item.getUTCHours(), item.getUTCMinutes(), item.getUTCSeconds());
@@ -42,6 +42,7 @@ const styles = {
   resultsWrapper: {
     float: 'left',
     width: '100%',
+    marginBottom: '2em',
     '@media (min-width: 680px)': {
       width: '50%'
     },

@@ -72,7 +72,7 @@ export default class PlannerForm extends Component {
         </div>
         <div style={styles.formWrapper}>
 
-          <h4>Исходные данные расчета</h4>
+          <h4>Выберите звезду из списка</h4>
 
           <ul style={styles.ul}>
             <li style={styles.li}>
@@ -115,6 +115,7 @@ const styles = {
     width: '100%',
     boxSizing: 'border-box',
     borderTop: 'solid 1px #e2e2e2',
+    marginTop: '1em',
     '@media (min-width: 680px)': {
       borderBottom: 'solid 1px #e2e2e2',
       paddingLeft: '300px'
